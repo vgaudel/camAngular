@@ -1,0 +1,31 @@
+<h3>Choisir une couleur pour les nombres au carré</h3>
+
+<select [(ngModel)]="couleurChoisie">
+
+    @for(c of listeCouleurs ; track c){
+        <option [ngValue]="c.en">{{c.fr}}</option>
+    }
+
+</select>
+
+{{couleurChoisie}}
+
+     <br>
+
+<label>nouvelle Valeur:</label> <input type="text" [(ngModel)]="nouvelleValeur" > <br>
+<input type="button" value="ajouter" (click)="onAjoutNouvelleValeur()" > <br>
+<hr>
+<h3>{{message}}</h3>
+
+
+<table [border]="1" style.color="couleurChoisie"> 
+    <tr> <th>i</th> <th>i*i</th> <th>Action</th></tr> 
+   
+    @for(n of values ; track $index){
+        <tr>
+            <td>{{n}}</td><td>{{n*n}}</td>
+            <td><input type="button" (click)="onSupprimerLigne($index)" value="Supprimer"></td>
+        </tr>
+    }
+
+</table>

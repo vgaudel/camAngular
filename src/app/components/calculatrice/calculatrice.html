@@ -1,0 +1,36 @@
+<h3>Calculatrice Angular v-{{versionCalculette}}</h3>
+
+<label> a:</label> <input type="number" [(ngModel)] = "a"> <br>
+<label> b:</label> <input type="number" [(ngModel)] = "b"> <br>
+
+<input type="button" value="+" (click)="onCalculer('+')" /> &nbsp;
+<input type="button" value="-" (click)="onCalculer('-')" /> &nbsp;
+<input type="button" value="*" (click)="onCalculer('*')" /> &nbsp;
+<input type="button" value="/" (click)="onCalculer('/')" [disabled]="b==0"/> &nbsp;
+
+<br> <label> Résultat:</label> <span [style.font-weight]="resultat<0?'bold':'normal'">{{resultat}}</span>
+
+<!-- <input type="button" value="Click" (click)="clickFromUser()" /> &nbsp; -->
+
+<!-- Affichage de l'historique de calcul -->
+<hr>
+<input type="checkbox" [(ngModel)]="montrerHistorique"> Voir l'historique des calculs
+
+@if(montrerHistorique){
+    <ul>
+        @for(h of historiqueCalculs; track h){
+            <li>{{h}}</li>
+        }
+    </ul>
+}
+
+
+<hr>
+<div (mousemove)="onMouseMove($event)"
+    (mouseleave)="onMouseLeave()">
+
+
+Zone à survoler à la souris. <br>
+x: {{x}} ; y: {{y}}  
+</div>
+<hr>
