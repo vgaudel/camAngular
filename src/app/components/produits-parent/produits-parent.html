@@ -1,0 +1,14 @@
+<h3>Exemple de @Input - Communication Parent=>Enfant</h3>
+
+<!--
+  COMMENT ÇA MARCHE ?
+  ====================
+  1. Le composant PARENT possède les données (ici : la liste de produits).
+  2. Il les transmet au composant ENFANT via la syntaxe [nomInput]="valeur".
+  3. Le composant ENFANT déclare ses inputs avec input.required().
+  4. Le flux de données est UNIDIRECTIONNEL : Parent → Enfant uniquement.
+-->
+
+@for (p of produits; track p.ref){
+    <app-produit-enfant [produit]="p" />
+}

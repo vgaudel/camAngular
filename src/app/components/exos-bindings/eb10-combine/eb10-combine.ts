@@ -19,7 +19,21 @@ export class Eb10Combine {
     { id: 4, nom: 'Salade',        prix: 1.2, categorie: 'legume',  stock: 0  },
     { id: 5, nom: "Jus d'orange",  prix: 2.5, categorie: 'boisson', stock: 8  },
     { id: 6, nom: 'Eau gazeuse',   prix: 1.0, categorie: 'boisson', stock: 20 },
+    
   ];
+
+  filtre : Filtre = 'tous';
+  cacherRupture: boolean = false;
+
+  get articlesFiltres(): IArticle[]{
+    return this.articles
+      .filter(a => this.filtre === 'tous' || this.filtre === a.categorie)
+      .filter(a => !this.cacherRupture || a.stock>0)
+  }
+
+  setFiltre(f: Filtre): void{
+    this.filtre = f;
+  }
 
   acheter(id: number){
     const article = this.articles.find(a => a.id === id);
