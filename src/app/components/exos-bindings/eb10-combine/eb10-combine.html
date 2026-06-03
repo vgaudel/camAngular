@@ -1,43 +1,25 @@
-<h3>EB10 — Combinaison : panier filtrable</h3>
-
-<div class="filtres">
-    <button [class.actif]="filtre === 'tous'"    (click)="setFiltre('tous')">Tous</button>
-    <button [class.actif]="filtre === 'fruit'"   (click)="setFiltre('fruit')">Fruits</button>
-    <button [class.actif]="filtre === 'legume'"  (click)="setFiltre('legume')">Legumes</button>
-    <button [class.actif]="filtre === 'boisson'" (click)="setFiltre('boisson')">Boissons</button>
-</div>
-
-<label>
-    <input type="checkbox" [(ngModel)]="cacherRupture" name="cacher">
-    Cacher les ruptures de stock
-</label>
+<h3>EB10 - Combo total : panier filtrable</h3>
 
 <div class="grille">
-    @for (a of articlesFiltres ; track a.id) {
-        <article class="carte" [style.opacity]="a.stock === 0 ? 0.4 : 1">
-            <h4>{{ a.nom }}</h4>
 
-            @switch (a.categorie) {
-                @case ('fruit')   { <span class="badge fruit">fruit</span> }
-                @case ('legume')  { <span class="badge legume">legume</span> }
-                @case ('boisson') { <span class="badge boisson">boisson</span> }
+    @for (articleItem of articles ; track articleItem.id){
+        <article class="carte">
+            <h4>{{articleItem.nom}}</h4>
+            
+            @switch(articleItem.categorie){
+                @case('fruit'){<span class="badge fruit">Fruit</span>}
+                @case('legume'){<span class="badge legume">Légume</span>}
+                @case('boisson'){<span class="badge boisson">Boisson</span>}
             }
-
-            <p>Prix : {{ a.prix }} €</p>
-
-            @if (a.stock > 0) {
-                <p>Stock : {{ a.stock }}</p>
+            <p>Prix: {{articleItem.prix}}</p>
+            
+            @if(articleItem.stock > 0){
+                <p>Stock: {{articleItem.stock}}</p>
             } @else {
                 <p class="rupture">En rupture</p>
             }
-
-            <button [disabled]="a.stock === 0" (click)="acheter(a.id)">Acheter</button>
+            <button [disabled]="articleItem.stock === 0" (click)="acheter(articleItem.id)">Acheter</button>
         </article>
-    } @empty {
-        <p>Aucun article ne correspond au filtre.</p>
     }
-</div>
 
-<p class="recap">
-    Articles affiches : {{ articlesFiltres.length }} / Total : {{ articles.length }}
-</p>
+</div>

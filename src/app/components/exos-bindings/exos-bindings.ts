@@ -33,5 +33,5 @@ export class ExosBindings {
     'eb09-switch',
     'eb10-combine',
   ];
-  selectedSousComposant: string = this.sousComposants[0];
+  selectedSousComposant: string = this.sousComposants[9];
 }
