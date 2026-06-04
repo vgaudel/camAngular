@@ -10,13 +10,14 @@ import { Ei07Reactions } from './ei07-reactions/ei07-reactions';
 import { Ei08Formulaire } from './ei08-formulaire/ei08-formulaire';
 import { Ei09Todos } from './ei09-todos/ei09-todos';
 import { Ei10Boutique } from './ei10-boutique/ei10-boutique';
+import { CorrExo2 } from './corr-exo2/corr-exo2';
 
 @Component({
   selector: 'app-exos-io',
   imports: [
     FormsModule,
     Ei01Carte, Ei02Notes, Ei03Contacts, Ei04Cinema, Ei05Alertes,
-    Ei06Couleur, Ei07Reactions, Ei08Formulaire, Ei09Todos, Ei10Boutique
+    Ei06Couleur, Ei07Reactions, Ei08Formulaire, Ei09Todos, Ei10Boutique, CorrExo2
   ],
   templateUrl: './exos-io.html',
   styleUrl: './exos-io.scss',
@@ -24,6 +25,7 @@ import { Ei10Boutique } from './ei10-boutique/ei10-boutique';
 export class ExosIO {
 
   composants: string[] = [
+    'corr-exo2',
     'ei01-carte',
     'ei02-notes',
     'ei03-contacts',

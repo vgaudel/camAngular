@@ -8,7 +8,7 @@
 
 <div class="vote-box">
     <h4>Votez !</h4>
-    <button (click)="voter('pour')">Pour</button>
+    <button (click)="voter('pour')" [textContent]="'Pour'"></button>
     <button (click)="voter('contre')">Contre</button>
     <button (click)="voter('absention')">Abstention</button>
 </div>
