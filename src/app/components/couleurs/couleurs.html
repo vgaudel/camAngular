@@ -2,7 +2,7 @@
 
 <select [(ngModel)]="couleurChoisie">
 
-    @for(c of listeCouleurs ; track c){
+    @for(c of listeCouleurs ; track $index){
         <option [ngValue]="c.en">{{c.fr}}</option>
     }
 

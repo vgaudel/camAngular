@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ei01Carte } from './ei01-carte/ei01-carte';
 import { Ei02Notes } from './ei02-notes/ei02-notes';
@@ -10,22 +10,24 @@ import { Ei07Reactions } from './ei07-reactions/ei07-reactions';
 import { Ei08Formulaire } from './ei08-formulaire/ei08-formulaire';
 import { Ei09Todos } from './ei09-todos/ei09-todos';
 import { Ei10Boutique } from './ei10-boutique/ei10-boutique';
-import { CorrExo2 } from './corr-exo2/corr-exo2';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-exos-io',
   imports: [
     FormsModule,
     Ei01Carte, Ei02Notes, Ei03Contacts, Ei04Cinema, Ei05Alertes,
-    Ei06Couleur, Ei07Reactions, Ei08Formulaire, Ei09Todos, Ei10Boutique, CorrExo2
+    Ei06Couleur, Ei07Reactions, Ei08Formulaire, Ei09Todos, Ei10Boutique,
   ],
   templateUrl: './exos-io.html',
   styleUrl: './exos-io.scss',
 })
 export class ExosIO {
 
+  private _routeService = inject(ActivatedRoute)
+
   composants: string[] = [
-    'corr-exo2',
     'ei01-carte',
     'ei02-notes',
     'ei03-contacts',
@@ -37,5 +39,16 @@ export class ExosIO {
     'ei09-todos',
     'ei10-boutique'
   ];
-  selectedComponent: string = this.composants[0];
+  selectedComponent: string;
+  isIndiceOutOfBounds : boolean = false;
+
+  constructor(){
+    
+    let indice:number = this._routeService.snapshot.paramMap.get('numExo') ? Number(this._routeService.snapshot.paramMap.get('numExo')) : 1;
+    this.isIndiceOutOfBounds= (indice-1<0) || (indice-1>this.composants.length-1);
+    console.log("out of bounds ? " + Number(this._routeService.snapshot.paramMap.get('numExo')) + " " + this.isIndiceOutOfBounds);
+    this.selectedComponent = this.composants[
+      (this.isIndiceOutOfBounds)?0:indice-1];
+    
+  }
 }

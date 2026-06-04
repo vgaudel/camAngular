@@ -1,8 +1,12 @@
-<b (click)="goToWelcome()">{{titleHeader()}}</b> &nbsp; 
+<header [style.background-color]="preferenceService.couleurFondPreferee">
 
-<a routerLink="/basics"> Bases d'Angular </a> &nbsp; 
-<a routerLink="/exos-bindings"> Bindings </a> &nbsp; 
-<a routerLink="/exos-signals"> Signals </a> &nbsp; 
-<a routerLink="/exos-io"> Input/Output </a> &nbsp; 
-<hr>
+    <b (click)="goToWelcome()">{{titleHeader()}}</b> &nbsp; 
+
+    <a routerLink="/basics"> Bases d'Angular </a> &nbsp; 
+    <a routerLink="/exos-bindings"> Bindings </a> &nbsp; 
+    <a routerLink="/exos-signals"> Signals </a> &nbsp; 
+    <a routerLink="/exos-io"> Input/Output </a> &nbsp; 
+    <a routerLink="/user-form"> User Form </a> &nbsp; 
+    <hr>
     
+</header>

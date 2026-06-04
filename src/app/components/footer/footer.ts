@@ -1,9 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Preferences } from '../../services/preferences';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
-export class Footer {}
+export class Footer {
+
+  private _preferenceService = inject(Preferences);
+
+  get preferenceService(){
+    return this._preferenceService;
+  }
+
+}

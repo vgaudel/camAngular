@@ -1,0 +1,50 @@
+<p>user-form works!</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @let userName = form.get('userName');
+    @let email = form.get('email');
+    <div>
+        <label>UserName</label>
+        <input id="userName" type="text" formControlName="userName" >
+        @if(userName?.touched){
+            @if(userName?.hasError('required')){
+                <span class="erreur">Champs requis</span>
+            } @else if (userName?.hasError('minlength')){
+                <span class="erreur">
+                    Minimum {{userName?.errors?.['minlength'].requiredLength}} caractères
+                    (actuellement {{userName?.errors?.['minlength'].actualLength}})
+                </span>
+            } 
+        }
+    </div>
+
+    <div>
+        <label>FirstName</label>
+        <input id="firstName" type="text" formControlName="firstName" >
+        @if(email?.invalid && email?.dirty){
+            <span class="erreur">Adresse email invalide</span>
+        }
+    </div>
+
+    <div>
+        <label>LastName</label>
+        <input id="lastName" type="email" formControlName="lastName" >
+        @if(email?.invalid && email?.dirty){
+            <span class="erreur">Adresse email invalide</span>
+        }
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input id="email" type="email" formControlName="email" >
+        @if(email?.invalid && email?.dirty){
+            <span class="erreur">Adresse email invalide</span>
+        }
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="form.invalid">Enregistrer</button>
+        {{form.invalid}}
+    </div>
+
+</form>

@@ -1,5 +1,9 @@
 <h2>Exercices — Input properties et Output events en Angular</h2>
 
+@if(isIndiceOutOfBounds){
+    <p style="color:red;">L'exercice que vous cherchez n'existe pas !</p>
+}
+
 <select [(ngModel)]="selectedComponent">
     @for(comp of composants ; track comp){
     <option [ngValue]="comp">{{comp}}</option>
@@ -36,9 +40,6 @@
     }
     @case ('ei10-boutique'){
     <app-ei10-boutique></app-ei10-boutique>
-    }
-    @case ('corr-exo2'){
-    <app-corr-exo2/>
     }
     @default {
         <p> Sélectionnez un composant </p>
