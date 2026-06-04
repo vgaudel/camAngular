@@ -1,4 +1,4 @@
-import { Component,signal, WritableSignal, computed } from '@angular/core';
+import { Component,signal, WritableSignal, computed, effect } from '@angular/core';
 
 @Component({
   selector: 'app-signals',
@@ -21,6 +21,7 @@ export class Signals {
     setTimeout(()=>this.count2.set(122),3000);
     setTimeout(()=>this.tva.set(10),5000);
     setTimeout(()=>this.prixHT.set(120),3000);
+    effect(() => console.log("Nouveau prix HT " + this.prixHT()));
   }
 
 }

@@ -14,6 +14,8 @@ export class OutputVote {
   contre: number = 0;
   abstention: number = 0;
 
+  get total() { return this.pour + this.contre + this.abstention;}
+
   // méthode appelée lorsque l'enfant a voté
   onVoteRecu(choix: string){
     if (choix === "pour") this.pour++;
