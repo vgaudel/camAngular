@@ -6,6 +6,7 @@ import { ExosIO } from './components/exos-io/exos-io';
 import { Welcome } from './components/welcome/welcome';
 import { NotFound } from './components/not-found/not-found';
 import { UserForm } from './components/forms/user-form/user-form';
+import { ExosPrimeng } from './components/exos-primeng/exos-primeng';
 
 export const routes: Routes = [
     //Pour faire du routing, il faut construire un tableau de correspondances
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path : 'exos-io/:numExo', component : ExosIO},
     { path : 'exos-io', component : ExosIO},
     { path : 'user-form', component : UserForm},
+    { path : 'primeNg', component : ExosPrimeng},
     { path : '**', component : NotFound}
 ];

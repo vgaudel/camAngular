@@ -1,0 +1,7 @@
+<h3>Exercice 1 — Boutons et icônes</h3>
+<div class="flex gap-2 flex-wrap">
+  <p-button label="Sauvegarder" icon="pi pi-save" (onClick)="clic('Sauvegarder')" />
+  <p-button label="Supprimer" icon="pi pi-trash" severity="danger" (onClick)="clic('Supprimer')" />
+  <p-button label="Annuler" severity="secondary" [outlined]="true" (onClick)="clic('Annuler')" />
+  <p-button icon="pi pi-cog" [rounded]="true" (onClick)="clic('Cog')" />
+</div>

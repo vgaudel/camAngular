@@ -1,0 +1,17 @@
+<h3>Exercice 11 — Dialog modale</h3>
+
+<p-button label="Voir détails" icon="pi pi-info-circle"
+          (onClick)="visible = true" />
+
+<p-dialog [(visible)]="visible" [modal]="true" header="Détails"
+          [style]="{width: '30rem'}">
+  <p>
+    Voici un contenu d'exemple dans une modale PrimeNG.
+    Elle se ferme avec la croix, la touche Échap ou le bouton ci-dessous.
+  </p>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Fermer" icon="pi pi-times"
+              severity="secondary" (onClick)="visible = false" />
+  </ng-template>
+</p-dialog>

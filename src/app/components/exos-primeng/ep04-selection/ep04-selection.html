@@ -1,0 +1,17 @@
+<h3>Exercice 4 — Sélection simple et multiple</h3>
+
+<div class="flex flex-col gap-3 w-96">
+  <div>
+    <label>Catégorie</label>
+    <p-select [options]="categories" [(ngModel)]="categorie"
+              placeholder="Choisir une catégorie" class="w-full" />
+    <small>Sélection : {{ categorie ?? '—' }}</small>
+  </div>
+
+  <div>
+    <label>Tags</label>
+    <p-multiSelect [options]="tagsDispo" [(ngModel)]="tags"
+                   placeholder="Choisir des tags" display="chip" class="w-full" />
+    <small>Sélection : {{ tags.join(', ') || '—' }}</small>
+  </div>
+</div>

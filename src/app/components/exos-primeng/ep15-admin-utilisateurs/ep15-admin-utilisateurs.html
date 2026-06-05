@@ -1,0 +1,90 @@
+<h3>Exercice 15 — Mini back-office utilisateurs</h3>
+
+<p-toast />
+<p-confirmDialog />
+
+<p-toolbar>
+  <ng-template pTemplate="start">
+    <p-button label="Nouveau" icon="pi pi-plus" (onClick)="nouveau()" />
+  </ng-template>
+  <ng-template pTemplate="end">
+    <input pInputText type="text" [(ngModel)]="recherche"
+           (input)="filtrer($event)" placeholder="Rechercher..." />
+  </ng-template>
+</p-toolbar>
+
+<p-table #dt [value]="users()" [paginator]="true" [rows]="5"
+         [globalFilterFields]="['nom', 'email']">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="nom">Nom <p-sortIcon field="nom" /></th>
+      <th pSortableColumn="email">Email <p-sortIcon field="email" /></th>
+      <th>Rôle</th>
+      <th>Actif</th>
+      <th style="width: 8rem">Actions</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-u>
+    <tr>
+      <td>{{ u.nom }}</td>
+      <td>{{ u.email }}</td>
+      <td><p-tag [value]="u.role" [severity]="severite(u.role)" /></td>
+      <td>
+        <p-toggleSwitch [ngModel]="u.actif" (ngModelChange)="toggleActif(u)" />
+      </td>
+      <td>
+        <div class="flex gap-1">
+          <p-button icon="pi pi-pencil" [rounded]="true" [text]="true"
+                    (onClick)="editer(u)" />
+          <p-button icon="pi pi-trash" severity="danger"
+                    [rounded]="true" [text]="true" (onClick)="supprimer(u)" />
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="5">Aucun utilisateur</td></tr>
+  </ng-template>
+</p-table>
+
+<p-dialog [(visible)]="dialogVisible" [modal]="true"
+          [header]="editId === null ? 'Nouvel utilisateur' : 'Modifier l\'utilisateur'"
+          [style]="{width: '30rem'}">
+  <form [formGroup]="form" class="flex flex-col gap-3">
+    <div class="flex flex-col gap-1">
+      <label>Nom</label>
+      <input pInputText formControlName="nom" />
+      @if (f.nom.invalid && f.nom.touched) {
+        <p-message severity="error" text="Nom requis" />
+      }
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label>Email</label>
+      <input pInputText formControlName="email" />
+      @if (f.email.invalid && f.email.touched) {
+        <p-message severity="error" text="Email invalide" />
+      }
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label>Rôle</label>
+      <p-select formControlName="role" [options]="roles"
+                optionLabel="label" optionValue="value" />
+    </div>
+
+    <div class="flex items-center gap-2">
+      <p-toggleSwitch formControlName="actif" />
+      <span>Compte actif</span>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Annuler" severity="secondary"
+              (onClick)="dialogVisible = false" />
+    <p-button label="Enregistrer" icon="pi pi-check"
+              [disabled]="form.invalid" (onClick)="enregistrer()" />
+  </ng-template>
+</p-dialog>

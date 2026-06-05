@@ -1,0 +1,10 @@
+<h3>Exercice 6 — Réservation d'un créneau</h3>
+
+<p-datePicker [(ngModel)]="dateRdv" dateFormat="dd/mm/yy"
+              [showIcon]="true" [minDate]="aujourdhui" placeholder="Choisir une date" />
+
+@if (dateRdv) {
+  <p class="mt-3">Date choisie : <strong>{{ dateRdv | date:'fullDate':'':'fr-FR' }}</strong></p>
+} @else {
+  <p class="mt-3">Aucune date sélectionnée.</p>
+}

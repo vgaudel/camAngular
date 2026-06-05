@@ -1,0 +1,21 @@
+<h3>Exercice 2 — Champs texte simples</h3>
+
+<div class="flex flex-col gap-3 w-96">
+  <div>
+    <label>Nom</label>
+    <input pInputText [(ngModel)]="nom" class="w-full" />
+    <small>Saisi : {{ nom }}</small>
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input pInputText type="email" [(ngModel)]="email" class="w-full" />
+    <small>Saisi : {{ email }}</small>
+  </div>
+
+  <div>
+    <label>Bio</label>
+    <textarea pTextarea rows="3" [(ngModel)]="bio" class="w-full"></textarea>
+    <small>Saisi : {{ bio }}</small>
+  </div>
+</div>

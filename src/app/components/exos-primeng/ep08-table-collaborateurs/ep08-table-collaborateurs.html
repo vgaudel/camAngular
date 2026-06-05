@@ -1,0 +1,22 @@
+<h3>Exercice 8 — Tableau triable et paginé</h3>
+
+<p-table [value]="collaborateurs" [paginator]="true" [rows]="5"
+         [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="nom">Nom <p-sortIcon field="nom" /></th>
+      <th pSortableColumn="poste">Poste <p-sortIcon field="poste" /></th>
+      <th pSortableColumn="salaire">Salaire <p-sortIcon field="salaire" /></th>
+      <th pSortableColumn="dateEmbauche">Embauche <p-sortIcon field="dateEmbauche" /></th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-c>
+    <tr>
+      <td>{{ c.nom }}</td>
+      <td>{{ c.poste }}</td>
+      <td>{{ c.salaire | currency:'EUR' }}</td>
+      <td>{{ c.dateEmbauche | date:'dd/MM/yyyy' }}</td>
+    </tr>
+  </ng-template>
+</p-table>

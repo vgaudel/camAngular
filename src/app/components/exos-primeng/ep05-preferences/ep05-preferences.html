@@ -1,0 +1,41 @@
+<h3>Exercice 5 — Préférences utilisateur</h3>
+
+<h4>Notifications</h4>
+<div class="flex flex-col gap-2">
+  <div class="flex items-center gap-2">
+    <p-checkbox [(ngModel)]="newsletter" [binary]="true" inputId="cb-news" />
+    <label for="cb-news">Recevoir la newsletter</label>
+  </div>
+  <div class="flex items-center gap-2">
+    <p-checkbox [(ngModel)]="notifications" [binary]="true" inputId="cb-notif" />
+    <label for="cb-notif">Notifications push</label>
+  </div>
+  <div class="flex items-center gap-2">
+    <p-checkbox [(ngModel)]="partageStats" [binary]="true" inputId="cb-stats" />
+    <label for="cb-stats">Partager mes statistiques</label>
+  </div>
+</div>
+
+<h4>Fréquence d'envoi</h4>
+<div class="flex flex-col gap-2">
+  <div class="flex items-center gap-2">
+    <p-radioButton name="freq" value="quotidienne" [(ngModel)]="frequence" inputId="r1" />
+    <label for="r1">Quotidienne</label>
+  </div>
+  <div class="flex items-center gap-2">
+    <p-radioButton name="freq" value="hebdomadaire" [(ngModel)]="frequence" inputId="r2" />
+    <label for="r2">Hebdomadaire</label>
+  </div>
+  <div class="flex items-center gap-2">
+    <p-radioButton name="freq" value="mensuelle" [(ngModel)]="frequence" inputId="r3" />
+    <label for="r3">Mensuelle</label>
+  </div>
+</div>
+
+<h4>Thème</h4>
+<div class="flex items-center gap-2">
+  <p-toggleSwitch [(ngModel)]="dark" (ngModelChange)="toggleDark()" />
+  <span>Mode sombre</span>
+</div>
+
+<pre>{{ { newsletter, notifications, partageStats, frequence, dark } | json }}</pre>

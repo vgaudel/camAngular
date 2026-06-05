@@ -1,0 +1,8 @@
+<h3>Exercice 3 — Nombres et devises</h3>
+
+<p-inputNumber [(ngModel)]="prix" mode="currency" currency="EUR" locale="fr-FR" />
+
+<div class="flex gap-2 mt-3">
+  <p-button label="+10" (onClick)="ajouter()" />
+  <p-button label="-10" severity="secondary" (onClick)="retirer()" />
+</div>

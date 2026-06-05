@@ -1,0 +1,16 @@
+<h3>Exercice 7 — Carte produit</h3>
+
+<p-card [header]="produit.nom" [subheader]="'Réf. ' + produit.nom" [style]="{width: '22rem'}">
+  <ng-template pTemplate="header">
+    <img [src]="produit.image" [alt]="produit.nom"
+         style="width:100%; height:160px; object-fit:cover;" />
+  </ng-template>
+
+  <p class="text-xl font-bold">{{ produit.prix | currency:'EUR' }}</p>
+  <p-tag [value]="produit.badge" [severity]="severite" />
+
+  <ng-template pTemplate="footer">
+    <p-button label="Ajouter au panier" icon="pi pi-shopping-cart"
+              (onClick)="ajouterPanier()" />
+  </ng-template>
+</p-card>

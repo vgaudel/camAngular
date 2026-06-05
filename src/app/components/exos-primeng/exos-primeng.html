@@ -1,0 +1,28 @@
+<h2>Exercices — PrimeNG</h2>
+
+<select [(ngModel)]="selectedComponent">
+    @for (comp of composants; track comp) {
+        <option [ngValue]="comp">{{ comp }}</option>
+    }
+</select>
+
+<hr />
+
+@switch (selectedComponent) {
+    @case ('ep01-boutons') { <app-ep01-boutons /> }
+    @case ('ep02-saisie') { <app-ep02-saisie /> }
+    @case ('ep03-prix') { <app-ep03-prix /> }
+    @case ('ep04-selection') { <app-ep04-selection /> }
+    @case ('ep05-preferences') { <app-ep05-preferences /> }
+    @case ('ep06-reservation') { <app-ep06-reservation /> }
+    @case ('ep07-carte-produit') { <app-ep07-carte-produit /> }
+    @case ('ep08-table-collaborateurs') { <app-ep08-table-collaborateurs /> }
+    @case ('ep09-table-filtre') { <app-ep09-table-filtre /> }
+    @case ('ep10-menubar') { <app-ep10-menubar /> }
+    @case ('ep11-dialog') { <app-ep11-dialog /> }
+    @case ('ep12-toast') { <app-ep12-toast /> }
+    @case ('ep13-confirmation') { <app-ep13-confirmation /> }
+    @case ('ep14-form-inscription') { <app-ep14-form-inscription /> }
+    @case ('ep15-admin-utilisateurs') { <app-ep15-admin-utilisateurs /> }
+    @default { <p>Sélectionnez un exercice</p> }
+}
