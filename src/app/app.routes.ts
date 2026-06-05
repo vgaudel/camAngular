@@ -6,6 +6,8 @@ import { ExosIO } from './components/exos-io/exos-io';
 import { Welcome } from './components/welcome/welcome';
 import { NotFound } from './components/not-found/not-found';
 import { UserForm } from './components/forms/user-form/user-form';
+import { Pipes } from './components/pipes/pipes';
+import { ProductBackEnd } from './components/product-back-end/product-back-end';
 
 export const routes: Routes = [
     //Pour faire du routing, il faut construire un tableau de correspondances
@@ -18,5 +20,7 @@ export const routes: Routes = [
     { path : 'exos-io/:numExo', component : ExosIO},
     { path : 'exos-io', component : ExosIO},
     { path : 'user-form', component : UserForm},
+    { path : 'pipes', component : Pipes},
+    { path : 'productfromback', component : ProductBackEnd},
     { path : '**', component : NotFound}
 ];
